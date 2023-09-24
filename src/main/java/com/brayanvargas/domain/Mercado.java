@@ -41,10 +41,8 @@ public class Mercado {
     }
 
     public Producto buscar(String nombre){
-        boolean exist = false;
         for (Producto producto : productos) {
             if (producto.getNombreBV().equals(nombre)){
-                exist = true;
                 System.out.println("Producto con nombre: " + "'" + nombre + "'" + " se encuentra disponible");
                 return producto;
             }
@@ -54,10 +52,8 @@ public class Mercado {
     }
 
     public Producto buscar(int codigo){
-        boolean exist = false;
         for (Producto producto : productos) {
             if (producto.getCodigoBV() == codigo){
-                exist = true;
                 System.out.println("Producto con codigo: " + "'" + codigo + "'" + " se encuentra disponible");
                 return producto;
             }
