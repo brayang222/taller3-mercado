@@ -6,31 +6,31 @@ import java.util.List;
 public class Mercado {
     public static final byte CAPACIDAD_BV = 5;
     private String supermercadoBV;
-    private List<Producto> productos;
+    private List<Producto> productosBV;
 
     public Mercado(String supermercadoBV) {
         this.supermercadoBV = supermercadoBV;
-        this.productos = new ArrayList<>();
+        this.productosBV = new ArrayList<>();
     }
 
     public boolean agregar(Producto p){
-        if (productos.contains(p)){
+        if (productosBV.contains(p)){
             System.out.println("producto ya en mercado");
             return false;
-        } else if (productos.size() >= CAPACIDAD_BV) {
+        } else if (productosBV.size() >= CAPACIDAD_BV) {
             System.out.println("Capacidad excedida");
             return false;
         } else {
-            productos.add(p);
+            productosBV.add(p);
             System.out.println("Se agrego el producto con codigo: " + p.getCodigoBV() + " correctamente");
             return true;
         }
     }
 
     public boolean retirar(String nombre){
-        for (Producto producto : productos) {
+        for (Producto producto : productosBV) {
             if (producto.getNombreBV().equals(nombre)){
-                productos.remove(producto);
+                productosBV.remove(producto);
                 System.out.println("Producto '" + nombre + "' retirado correctamente");
                 return true;
             }
@@ -41,7 +41,7 @@ public class Mercado {
     }
 
     public Producto buscar(String nombre){
-        for (Producto producto : productos) {
+        for (Producto producto : productosBV) {
             if (producto.getNombreBV().equals(nombre)){
                 System.out.println("Producto con nombre: " + "'" + nombre + "'" + " se encuentra disponible");
                 return producto;
@@ -52,7 +52,7 @@ public class Mercado {
     }
 
     public Producto buscar(int codigo){
-        for (Producto producto : productos) {
+        for (Producto producto : productosBV) {
             if (producto.getCodigoBV() == codigo){
                 System.out.println("Producto con codigo: " + "'" + codigo + "'" + " se encuentra disponible");
                 return producto;
@@ -65,7 +65,7 @@ public class Mercado {
     public List<Producto> buscarPorTipo(String tipo){
         List<Producto> productosEncontrados = new ArrayList<>();
         System.out.println("Los productos encontrados del mismo tipo son: ");
-        productos.forEach(producto -> {
+        productosBV.forEach(producto -> {
             if (producto.getTipoBV().equals(tipo)){
                 productosEncontrados.add(producto);
                 System.out.println(producto.getNombreBV());
@@ -76,7 +76,7 @@ public class Mercado {
 
     public int calcularTotal(){
         int total = 0;
-        for (Producto producto : productos) {
+        for (Producto producto : productosBV) {
             int precio = producto.getPrecioBV();
             int cantidad = producto.getCantidadBV();
             String name = producto.getNombreBV();
@@ -94,7 +94,7 @@ public class Mercado {
         return supermercadoBV;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<Producto> getProductosBV() {
+        return productosBV;
     }
 }
